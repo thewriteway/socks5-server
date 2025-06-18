@@ -29,7 +29,7 @@ jobs:
       -
         name: Set up Docker Buildx
         id: buildx
-        uses: crazy-max/ghaction-docker-buildx@v1.1.0
+        uses: crazy-max/ghaction-docker-buildx@v1.2.1
       -
         name: Print builder available platforms
         run: echo ${{ steps.buildx.outputs.platforms }}
