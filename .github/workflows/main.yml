@@ -35,7 +35,7 @@ jobs:
         run: echo ${{ steps.buildx.outputs.platforms }}
       -
         id: meta
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v5
         with:
           images: serjs/go-socks5-proxy
           tags: |
