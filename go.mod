@@ -4,7 +4,7 @@ go 1.23.0
 
 require (
 	github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5
-	github.com/caarlos0/env/v7 v7.1.0
+	github.com/caarlos0/env/v8 v8.0.0
 )
 
 require (
