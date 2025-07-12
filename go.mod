@@ -9,5 +9,6 @@ require (
 
 require (
 	github.com/caarlos0/env/v6 v6.10.1
+	github.com/caarlos0/env/v8 v8.0.0
 	golang.org/x/net v0.42.0
 )
