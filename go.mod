@@ -8,9 +8,5 @@ require (
 )
 
 require (
-	github.com/caarlos0/env/v10 v10.0.0
-	github.com/caarlos0/env/v8 v8.0.0
-	github.com/caarlos0/env/v7 v7.1.0
-	github.com/caarlos0/env/v8 v8.0.0
 	golang.org/x/net v0.42.0
 )
