@@ -6,5 +6,6 @@ require github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5
 
 require (
 	github.com/caarlos0/env/v6 v6.10.1
+	github.com/caarlos0/env/v7 v7.1.0
 	golang.org/x/net v0.43.0
 )
