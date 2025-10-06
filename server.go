@@ -4,7 +4,6 @@ import (
 	"log"
 	"net"
 	"os"
-
 	"github.com/armon/go-socks5"
 	"github.com/caarlos0/env/v6"
 )
@@ -15,6 +14,8 @@ type params struct {
 	Port            string    `env:"PROXY_PORT" envDefault:"1080"`
 	AllowedDestFqdn string    `env:"ALLOWED_DEST_FQDN" envDefault:""`
 	AllowedIPs      []string  `env:"ALLOWED_IPS" envSeparator:"," envDefault:""`
+	ListenIP 		string 	  `env:"PROXY_LISTEN_IP" envDefault:"0.0.0.0"`
+	RequireAuth		bool      `env:"REQUIRE_AUTH" envDefault:"true"`
 }
 
 func main() {
@@ -30,12 +31,17 @@ func main() {
 		Logger: log.New(os.Stdout, "", log.LstdFlags),
 	}
 
-	if cfg.User+cfg.Password != "" {
+	if cfg.RequireAuth {
+		if cfg.User == "" || cfg.Password == "" {
+			log.Fatalln("Error: REQUIRE_AUTH is true, but PROXY_USER and PROXY_PASSWORD are not set.  The application will now exit.")
+		}
 		creds := socks5.StaticCredentials{
-			os.Getenv("PROXY_USER"): os.Getenv("PROXY_PASSWORD"),
+			cfg.User: cfg.Password,
 		}
 		cator := socks5.UserPassAuthenticator{Credentials: creds}
 		socks5conf.AuthMethods = []socks5.Authenticator{cator}
+	} else {
+		log.Println("Warning: Running the proxy server without authentication. This is NOT recommended for public servers.")
 	}
 
 	if cfg.AllowedDestFqdn != "" {
@@ -56,8 +62,14 @@ func main() {
 		server.SetIPWhitelist(whitelist)
 	}
 
-	log.Printf("Start listening proxy service on port %s\n", cfg.Port)
-	if err := server.ListenAndServe("tcp", ":"+cfg.Port); err != nil {
+	listenAddr := ":" + cfg.Port
+	if cfg.ListenIP != "" {
+		listenAddr = cfg.ListenIP + ":" + cfg.Port
+	}
+
+
+	log.Printf("Start listening proxy service on %s\n", listenAddr)
+	if err := server.ListenAndServe("tcp", listenAddr); err != nil {
 		log.Fatal(err)
 	}
 }
