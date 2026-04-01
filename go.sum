@@ -1,5 +1,6 @@
 github.com/caarlos0/env/v6 v6.10.1 h1:t1mPSxNpei6M5yAeu1qtRdPAK29Nbcf/n3G7x+b3/II=
 github.com/caarlos0/env/v6 v6.10.1/go.mod h1:hvp/ryKXKipEkcuYjs9mI4bBCg+UI0Yhgm5Zu0ddvwc=
+github.com/caarlos0/env/v8 v8.0.0/go.mod h1:7K4wMY9bH0esiXSSHlfHLX5xKGQMnkH5Fk4TDSSSzfo=
 github.com/serjs/go-socks5 v0.0.0-20250923183437-3920b97ee0d2 h1:dIXY/Lrkd1rGXcN60Fc0M2x0p5/C2XcbBbtPCvVvAa4=
 github.com/serjs/go-socks5 v0.0.0-20250923183437-3920b97ee0d2/go.mod h1:N2PhU16m3olAb71DduLys4mYR3oQboD4uLJmSXCSuMA=
 golang.org/x/net v0.50.0 h1:ucWh9eiCGyDR3vtzso0WMQinm2Dnt8cFMuQa9K33J60=
